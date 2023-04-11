@@ -4,10 +4,12 @@ import com.williamfeliciano.employeeservice.Exception.EmailAlreadyExistException
 import com.williamfeliciano.employeeservice.dto.APIResponseDto;
 import com.williamfeliciano.employeeservice.dto.DeparmentDto;
 import com.williamfeliciano.employeeservice.dto.EmployeeDto;
+import com.williamfeliciano.employeeservice.dto.OrganizationDto;
 import com.williamfeliciano.employeeservice.entity.Employee;
 import com.williamfeliciano.employeeservice.repository.EmployeeRepository;
 import com.williamfeliciano.employeeservice.service.APIClient;
 import com.williamfeliciano.employeeservice.service.EmployeeService;
+import com.williamfeliciano.employeeservice.service.ORGAPIClient;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import lombok.AllArgsConstructor;
@@ -34,6 +36,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     //private WebClient webClient;
 
     private APIClient apiClient;
+
+    private ORGAPIClient orgapiClient;
 
     private ModelMapper modelMapper;
     @Override
@@ -65,12 +69,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 //                .retrieve()
 //                .bodyToMono(DeparmentDto.class)
 //                .block();
+
+
         // Open Feign
+
+        // Get Deparment
         DeparmentDto deparmentDto = apiClient.getDepartment(employee.getDeparmentCode());
+
+        // Get Organization
+        OrganizationDto organizationDto = orgapiClient.getOrganization(employee.getOrganizationCode());
+
         // Create the Responsedto
         APIResponseDto apiResponseDto = new APIResponseDto();
         apiResponseDto.setEmployee(employeeDto);
         apiResponseDto.setDeparment(deparmentDto);
+        apiResponseDto.setOrganization(organizationDto);
 
         return apiResponseDto;
     }

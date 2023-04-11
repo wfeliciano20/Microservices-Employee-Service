@@ -24,4 +24,6 @@ public class Employee {
 
     private String deparmentCode;
 
+    private String organizationCode;
+
 }

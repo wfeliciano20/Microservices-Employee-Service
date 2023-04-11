@@ -13,4 +13,5 @@ public class APIResponseDto {
 
     private EmployeeDto employee;
     private DeparmentDto deparment;
+    private OrganizationDto organization;
 }

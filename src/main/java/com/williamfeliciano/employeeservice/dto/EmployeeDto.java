@@ -22,5 +22,6 @@ public class EmployeeDto {
     @Email
     private String email;
     private String deparmentCode;
+    private String organizationCode;
 
 }
