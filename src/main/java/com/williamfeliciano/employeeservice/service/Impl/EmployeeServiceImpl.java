@@ -82,7 +82,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         // Create the Responsedto
         APIResponseDto apiResponseDto = new APIResponseDto();
         apiResponseDto.setEmployee(employeeDto);
-        apiResponseDto.setDeparment(deparmentDto);
+        apiResponseDto.setDepartment(deparmentDto);
         apiResponseDto.setOrganization(organizationDto);
 
         return apiResponseDto;
@@ -106,7 +106,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         // Create the Responsedto
         APIResponseDto apiResponseDto = new APIResponseDto();
         apiResponseDto.setEmployee(employeeDto);
-        apiResponseDto.setDeparment(deparmentDto);
+        apiResponseDto.setDepartment(deparmentDto);
 
         return apiResponseDto;
     }
